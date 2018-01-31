@@ -1,4 +1,4 @@
-class Api::V1::AuthControll < ApplicationController
+class Api::V1::AuthController < ApplicationController
 
 
 
