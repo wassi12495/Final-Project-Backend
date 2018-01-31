@@ -20,4 +20,10 @@ class Api::V1::WorkoutsController < ApplicationController
   def destroy
   end
 
+  private
+
+  def workout_params(params)
+    params.require(workout).permit(:user_id, :duration)
+  end
+
 end
