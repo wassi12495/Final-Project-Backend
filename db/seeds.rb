@@ -9,3 +9,9 @@
 
 
 test_user = User.create(username:"Josh", password:"123", first_name:"Josh", last_name: "Test", is_trainer:true)
+
+test_workout = Workout.create(duration:2.5, user:test_user)
+
+test_cardio_exercise = Exercise.create(name: "Test Cardio", description: "Running on treadmill", exercise_type: "cardio", distance: 1.5, measure: "miles", workout: test_workout)
+
+test_weight_exercise = Exercise.create(name: "Test Weights", description: "Lifting weights", exercise_type: "weights", weight: 25, sets: 3, reps: 10, measure: "lbs", workout: test_workout)
