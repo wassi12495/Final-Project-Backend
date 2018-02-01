@@ -3,4 +3,9 @@ class User < ApplicationRecord
 
   has_many :workouts
   has_many :exercises, through: :workouts
+
+  validates :username, :password, :password_confirmation, presence: true
+  validates :password, confirmation: true
+
+
 end
