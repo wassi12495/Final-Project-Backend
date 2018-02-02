@@ -25,7 +25,10 @@ class Api::V1::AuthController < ApplicationController
     if current_user
       render json: {
         id: current_user.id,
-        username: current_user.username
+        username: current_user.username,
+        first_name: current_user.first_name,
+        last_name: current_user.last_name,
+        workouts: current_user.workouts
       }
     else
       render json: {error: 'No id present on headers'}, status: 404
