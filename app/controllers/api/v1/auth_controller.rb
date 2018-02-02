@@ -21,6 +21,7 @@ class Api::V1::AuthController < ApplicationController
   end
 
   def show
+
     if current_user
       render json: {
         id: current_user.id,
