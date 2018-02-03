@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :users
       resources :workouts
       resources :exercises
+      resources :routines
       post '/login', to: 'auth#create'
       get '/current_user', to: 'auth#show'
 
