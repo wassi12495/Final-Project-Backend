@@ -10,6 +10,8 @@
 
 test_user = User.create(username:"Josh", password:"111", password_confirmation:"111", first_name:"Josh", last_name: "\"Test\" Wasserman", is_trainer:true)
 
+sample_routine = Routine.create(title: "Sample Routine", user: test_user)
+
 # test_workout = Workout.create(duration:2.5, user:test_user)
 
 # test_cardio_exercise = Exercise.create(name: "Test Cardio", description: "Running on treadmill", exercise_type: "cardio", distance: 1.5, measure: "miles", workout: test_workout)
