@@ -8,7 +8,7 @@
 
 
 
-test_user = User.create(username:"Josh", password:"123", first_name:"Josh", last_name: "Test", is_trainer:true)
+test_user = User.create(username:"Josh", password:"123", first_name:"Josh", last_name: "\"Test\" Wasserman", is_trainer:true)
 
 test_workout = Workout.create(duration:2.5, user:test_user)
 
