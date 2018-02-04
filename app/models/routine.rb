@@ -12,4 +12,14 @@ class Routine < ApplicationRecord
 
   #Validations
   validates :title, presence: true
+
+
+
+
+  def getExercises
+    myExercises = exercises.map{|e| e}
+    return myExercises
+  end
+
+
 end
