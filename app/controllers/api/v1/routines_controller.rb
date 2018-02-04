@@ -12,12 +12,12 @@ class Api::V1::RoutinesController < ApplicationController
   end
 
   def create
-    byebug
     @routine = Routine.new(routine_params)
     if @routine.save
       render json: @routine
     else
       render json: {error:"Routine Invalid"}, status: 401
+    end
 
   end
 

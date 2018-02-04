@@ -12,6 +12,7 @@ class Api::V1::AuthController < ApplicationController
         first_name: @user.first_name,
         last_name: @user.last_name,
         workouts: @user.workouts,
+        routines: @user.routines,
         jwt: JWT.encode({user_id: @user.id}, ENV['secret_key'], 'HS256')
       }
     else

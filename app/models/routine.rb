@@ -1,4 +1,5 @@
 class Routine < ApplicationRecord
+
   belongs_to :user
 
   # Routine - Exercise associations
@@ -7,4 +8,8 @@ class Routine < ApplicationRecord
 
   # Routine - Workout associations
   has_many :workouts
+
+
+  #Validations
+  validates :title, presence: true
 end
