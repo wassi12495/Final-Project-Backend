@@ -22,8 +22,8 @@ class Api::V1::WorkoutsController < ApplicationController
 
   private
 
-  def workout_params(params)
-    params.require(workout).permit(:user_id,)
+  def workout_params
+    params.require(:workout).permit(:user_id, :routine_id, :title, :time_of_workout)
   end
 
 end

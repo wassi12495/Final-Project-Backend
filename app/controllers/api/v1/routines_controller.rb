@@ -27,6 +27,6 @@ class Api::V1::RoutinesController < ApplicationController
   private
 
     def routine_params
-
+      params.require(:routine).permit(:title, :user_id)
     end
 end
