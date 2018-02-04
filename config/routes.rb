@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users
       # resources :workouts
-      # resources :exercises
+      resources :exercises
       # resources :routines
       post '/login', to: 'auth#create'
       get '/current_user', to: 'auth#show'

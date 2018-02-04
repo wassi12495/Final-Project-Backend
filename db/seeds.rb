@@ -10,6 +10,13 @@
 
 test_user = User.create(username:"Josh", password:"111", password_confirmation:"111", first_name:"Josh", last_name: "\"Test\" Wasserman", is_trainer:true)
 
+
+cardio = ExerciseCategory.create(name: "Cardio", length_measurements:["distance"], length_units:["miles, km"], time_measurements:["time"], time_units:["hours", "minutes"])
+
+run = Exercise.create(name: "Run", description:"Outdoor Run", exercise_category:cardio)
+
+user_exercise = UserExercise.create(name: "Jog around the pond", description:"Jog around the pond in the park", exercise_category:cardio)
+
 # sample_routine = Routine.create(title: "Sample Routine", user: test_user)
 
 # test_workout = Workout.create(title: "Test workout", user: test_user, routine:sample_routine, time_of_workout: Time.now)

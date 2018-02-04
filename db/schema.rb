@@ -10,26 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180131180440) do
+ActiveRecord::Schema.define(version: 20180204031334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "exercise_categories", force: :cascade do |t|
+    t.string "name"
+    t.text "time_measurements", default: [], array: true
+    t.text "length_measurements", default: [], array: true
+    t.text "mass_measurements", default: [], array: true
+    t.text "time_units", default: [], array: true
+    t.text "length_units", default: [], array: true
+    t.text "mass_units", default: [], array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "exercises", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.boolean "is_cardio", default: false
-    t.boolean "is_weights", default: false
-    t.integer "weight"
-    t.integer "sets"
-    t.integer "reps"
-    t.integer "distance"
-    t.integer "duration"
-    t.string "measure"
-    t.bigint "workout_id"
+    t.bigint "exercise_category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["workout_id"], name: "index_exercises_on_workout_id"
+    t.index ["exercise_category_id"], name: "index_exercises_on_exercise_category_id"
   end
 
   create_table "users", force: :cascade do |t|
