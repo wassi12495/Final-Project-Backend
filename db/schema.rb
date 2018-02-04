@@ -18,7 +18,8 @@ ActiveRecord::Schema.define(version: 20180203213426) do
   create_table "exercises", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "exercise_type"
+    t.boolean "is_cardio", default: false
+    t.boolean "is_weights", default: false
     t.integer "weight"
     t.integer "sets"
     t.integer "reps"
@@ -51,8 +52,8 @@ ActiveRecord::Schema.define(version: 20180203213426) do
   end
 
   create_table "workouts", force: :cascade do |t|
-    t.integer "duration"
     t.string "title"
+    t.string "time_of_workout"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

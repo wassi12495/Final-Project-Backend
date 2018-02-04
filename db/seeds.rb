@@ -10,7 +10,9 @@
 
 test_user = User.create(username:"Josh", password:"111", password_confirmation:"111", first_name:"Josh", last_name: "\"Test\" Wasserman", is_trainer:true)
 
-sample_routine = Routine.create(title: "Sample Routine", user: test_user)
+# sample_routine = Routine.create(title: "Sample Routine", user: test_user)
+
+# test_workout = Workout.create(title: "Test workout", user: test_user, routine:sample_routine, time_of_workout: Time.now)
 
 # test_workout = Workout.create(duration:2.5, user:test_user)
 

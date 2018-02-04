@@ -1,13 +1,14 @@
 class Api::V1::RoutinesController < ApplicationController
 
   def index
-    @routines = Routine.all 
+    @routines = Routine.all
     render json: @routines
 
   end
 
   def show
-
+    @routine = Routine.find(params[:id])
+    render json: @routine
   end
 
   def create

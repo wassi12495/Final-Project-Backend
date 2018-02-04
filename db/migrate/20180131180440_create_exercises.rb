@@ -3,7 +3,8 @@ class CreateExercises < ActiveRecord::Migration[5.1]
     create_table :exercises do |t|
       t.string :name
       t.string :description
-      t.string :exercise_type
+      t.boolean :is_cardio, default: false
+      t.boolean :is_weights, default: false
       t.integer :weight
       t.integer :sets
       t.integer :reps
