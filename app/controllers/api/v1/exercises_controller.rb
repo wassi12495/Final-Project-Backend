@@ -17,7 +17,7 @@ class Api::V1::ExercisesController < ApplicationController
   private
 
   def exercise_params(params)
-    params.require(exercise).require(:id, :name, :description, :exercise_type, :weight, :sets, :reps, :distance, :duration, :measure )
+    params.require(exercise).require(:id, :name, :description, :exercise_category)
   end
 
 end

@@ -27,5 +27,6 @@ class Api::V1::RoutinesController < ApplicationController
   private
 
     def routine_params
+
     end
 end
