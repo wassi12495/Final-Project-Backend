@@ -15,9 +15,8 @@ cardio = ExerciseCategory.create(name: "Cardio", length_measurements:["distance"
 
 run = Exercise.create(name: "Run", description:"Outdoor Run", exercise_category:cardio)
 
-user_exercise = UserExercise.create(name: "Jog around the pond", description:"Jog around the pond in the park", exercise_category:cardio)
 
-# sample_routine = Routine.create(title: "Sample Routine", user: test_user)
+sample_routine = Routine.create(title: "Sample Routine", user: test_user)
 
 # test_workout = Workout.create(title: "Test workout", user: test_user, routine:sample_routine, time_of_workout: Time.now)
 
