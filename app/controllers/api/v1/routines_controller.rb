@@ -16,7 +16,7 @@ class Api::V1::RoutinesController < ApplicationController
     if @routine.save
       render json: @routine
     else
-      render json: {error:"Routine Invalid"}, status: 401
+      render json: {error: @routine.errors.messages }, status: 401
     end
 
   end
