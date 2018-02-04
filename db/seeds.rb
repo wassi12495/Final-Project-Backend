@@ -20,7 +20,7 @@ sample_routine = Routine.create(title: "Sample Routine", user: test_user)
 
 RoutineExercise.create(routine: sample_routine, exercise: run)
 
-# test_workout = Workout.create(title: "Test workout", user: test_user, routine:sample_routine, time_of_workout: Time.now)
+test_workout = Workout.create(title: "Test workout", user: test_user, time_of_workout: Time.now)
 
 # test_workout = Workout.create(duration:2.5, user:test_user)
 
