@@ -1,6 +1,6 @@
 class RoutineSerializer < ActiveModel::Serializer
-  attributes :id, :title, :exercises, :workouts
+  attributes :id, :title, :routine_exercises, :workouts
   has_one :user
-  # has_many :routine_exercises
-  has_many :exercises
+  has_many :routine_exercises
+  # has_many :exercises
 end

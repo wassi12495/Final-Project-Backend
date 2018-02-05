@@ -39,6 +39,11 @@ ActiveRecord::Schema.define(version: 20180204042100) do
   create_table "routine_exercises", force: :cascade do |t|
     t.bigint "routine_id"
     t.bigint "exercise_id"
+    t.string "name"
+    t.string "description"
+    t.integer "sets"
+    t.integer "reps", default: [], array: true
+    t.text "measure"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["exercise_id"], name: "index_routine_exercises_on_exercise_id"
@@ -67,6 +72,8 @@ ActiveRecord::Schema.define(version: 20180204042100) do
   create_table "workouts", force: :cascade do |t|
     t.string "title"
     t.string "time_of_workout"
+    t.string "duration"
+    t.text "exercises", default: [], array: true
     t.bigint "routine_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false

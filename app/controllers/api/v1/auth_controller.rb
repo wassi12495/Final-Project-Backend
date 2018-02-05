@@ -31,7 +31,7 @@ class Api::V1::AuthController < ApplicationController
         last_name: current_user.last_name,
         workouts: current_user.workouts,
         routines: current_user.routines.map do |routine|
-          {id: routine.id, title:  routine.title, exercises: routine.exercises, workouts: routine.workouts}
+          {id: routine.id, title:  routine.title, exercises: routine.routine_exercises, workouts: routine.workouts}
         end
 
       }
