@@ -7,7 +7,7 @@ class Api::V1::UsersController < ApplicationController
 
   # TODO: I don't know if I will need this
   def show
-
+    
   end
 
   def create

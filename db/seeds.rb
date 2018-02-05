@@ -4,10 +4,14 @@
 test_user = User.create(username:"Josh", password:"111", password_confirmation:"111", first_name:"Josh", last_name: "\"Test\" Wasserman", is_trainer:true)
 
 # Create Test ExerciseCategories
-cardio = ExerciseCategory.create(name: "Cardio", length_measurements:["distance"], length_units:["miles, km"], time_measurements:["time"], time_units:["hours", "minutes"])
+cardio = ExerciseCategory.create(name: "Cardio", length_measurements:["distance"], length_units:["miles", "km"], time_measurements:["time"], time_units:["hours", "minutes"])
+
+olympic = ExerciseCategory.create(name: "Olympic Lift", mass_measurements:["weight"], mass_units:["lb", "kg"], time_measurements:["sets", "reps"], time_units:["X"])
 
 # Create Test Exercises
 run = Exercise.create(name: "Run", description:"Outdoor Run", exercise_category:cardio)
+deadLift = Exercise.create(name: "Dead Lift", description:"Olympic Lift", exercise_category:olympic)
+benchPress = Exercise.create(name: "Bench Press", description:"Bench Press (flat bench) ", exercise_category:olympic)
 
 
 # Create Test Routines
