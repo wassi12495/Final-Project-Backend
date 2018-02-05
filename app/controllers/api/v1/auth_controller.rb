@@ -40,5 +40,18 @@ class Api::V1::AuthController < ApplicationController
     end
   end
 
+  def show_workouts
+
+    if current_user
+      workouts = current_user.workouts.map do |w|
+        {id:w.id, title:w.title, time_of_workout: w.time_of_workout}
+      end
+
+      render json:{workouts: workouts }
+    else
+      render json: {error: 'Workouts: No id present on headers'}, status: 404
+    end
+  end
+
 
 end

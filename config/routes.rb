@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
       post '/login', to: 'auth#create'
       get '/current_user', to: 'auth#show'
+      get '/current_user/workouts', to: 'auth#show_workouts'
 
 
     end
