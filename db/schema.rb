@@ -17,12 +17,9 @@ ActiveRecord::Schema.define(version: 20180204042100) do
 
   create_table "exercise_categories", force: :cascade do |t|
     t.string "name"
-    t.text "time_measurements", default: [], array: true
-    t.text "length_measurements", default: [], array: true
-    t.text "mass_measurements", default: [], array: true
-    t.text "time_units", default: [], array: true
-    t.text "length_units", default: [], array: true
-    t.text "mass_units", default: [], array: true
+    t.string "subject_of_measurement"
+    t.string "unit"
+    t.string "measure_of_duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
