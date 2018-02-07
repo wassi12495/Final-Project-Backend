@@ -24,14 +24,14 @@ class Api::V1::AuthController < ApplicationController
   def show
 
     if current_user
-      
+
       render json: {
         id: current_user.id,
         username: current_user.username,
         first_name: current_user.first_name,
         last_name: current_user.last_name,
         workouts: current_user.workouts,
-        current_workout: current_user.current_workout,
+        currentWorkout: current_user.current_workout,
         routines: current_user.routines.map do |routine|
           {id: routine.id, title:  routine.title, exercises: routine.routine_exercises, workouts: routine.workouts}
         end
