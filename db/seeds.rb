@@ -32,6 +32,22 @@ RoutineExercise.create(routine: olympic_lifts_routine, exercise: benchPress, nam
 test_workout = Workout.create(title: "Test Custom workout", user: test_user, time_of_workout: Time.now)
 test_workout_2 = Workout.create(title: "Test routine workout", user: test_user, routine: cardio_routine, time_of_workout: Time.now)
 
+# Create Test Current Workout & Test Current Workout Exercises
+
+curr_workout = CurrentWorkout.create(user: test_user, routine: olympic_lifts_routine)
+
+ex1 = curr_workout.routine.routine_exercises[0]
+ex2 = curr_workout.routine.routine_exercises[1]
+e1 = ex1.exercise
+e2 = ex2.exercise
+
+cw1_exercise = CurrentWorkoutExercise.create(current_workout: curr_workout, exercise:e1, measure:ex1.measure, name: ex1.name, sets: ex1.sets, reps:ex1.reps)
+
+cw2_exercise = CurrentWorkoutExercise.create(current_workout: curr_workout, exercise:e2, measure:ex2.measure, name: ex2.name, sets: ex2.sets, reps:ex2.reps)
+
+
+
+
 # test_workout = Workout.create(duration:2.5, user:test_user)
 
 # test_cardio_exercise = Exercise.create(name: "Test Cardio", description: "Running on treadmill", exercise_type: "cardio", distance: 1.5, measure: "miles", workout: test_workout)

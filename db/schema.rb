@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180207183948) do
+ActiveRecord::Schema.define(version: 20180207201431) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "current_workout_exercises", force: :cascade do |t|
+    t.bigint "current_workout_id"
+    t.bigint "exercise_id"
+    t.string "measure"
+    t.string "name"
+    t.integer "sets"
+    t.integer "reps", default: [], array: true
+    t.integer "measure_input", default: [], array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["current_workout_id"], name: "index_current_workout_exercises_on_current_workout_id"
+    t.index ["exercise_id"], name: "index_current_workout_exercises_on_exercise_id"
+  end
 
   create_table "current_workouts", force: :cascade do |t|
     t.bigint "user_id"
@@ -88,6 +102,8 @@ ActiveRecord::Schema.define(version: 20180207183948) do
     t.index ["user_id"], name: "index_workouts_on_user_id"
   end
 
+  add_foreign_key "current_workout_exercises", "current_workouts"
+  add_foreign_key "current_workout_exercises", "exercises"
   add_foreign_key "current_workouts", "routines"
   add_foreign_key "current_workouts", "users"
   add_foreign_key "routine_exercises", "exercises"

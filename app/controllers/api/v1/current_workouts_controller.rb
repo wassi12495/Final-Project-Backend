@@ -15,7 +15,12 @@ class Api::V1::CurrentWorkoutsController < ApplicationController
         byebug
 
         if @current_workout.save
-          render json: {message: "Current Workout created"}, status: 200
+          byebug
+          @current_workout.routine.routine_exercises.each do |re|
+            exercise = re.exercise
+            CurrentWorkoutExercise.create(current_workout:@curren_workout, exercise: exercise, measure: re.measure, name: re.name, sets:re.sets, reps:re.reps)
+          end
+          render json: @curren_workout
         else
           render json: {error: "Failed to create current workout"}, status: 401
         end
@@ -37,6 +42,10 @@ class Api::V1::CurrentWorkoutsController < ApplicationController
   def current_workout_params
     params.require(:current_workout).permit(:routine_id)
 
+  end
+
+  def current_workout_exercise_params
+    byebug
   end
 
 end
