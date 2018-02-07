@@ -13,7 +13,16 @@ class Api::V1::RoutinesController < ApplicationController
 
   def create
     @routine = Routine.new(routine_params)
+
     if @routine.save
+      params["routine"]["exercises"].each do |e|
+        @exercise = Exercise.find_by(id: e["id"])
+        reps = e["sets"].map{|s| s["reps"]}
+        byebug
+
+        RoutineExercise.create(routine: @routine, exercise: @exercise, name: e[:name], description: e[:description], sets: e["sets"].last["set"], reps: reps  )
+      end
+      byebug
       render json: @routine
     else
       render json: {error: @routine.errors.messages }, status: 401
