@@ -10,6 +10,7 @@ class Api::V1::WorkoutsController < ApplicationController
   end
 
   def create
+    render json: {message: "You are still in testing mode!"}
   end
 
 
