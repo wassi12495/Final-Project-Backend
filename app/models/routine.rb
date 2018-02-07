@@ -9,6 +9,8 @@ class Routine < ApplicationRecord
   # Routine - Workout associations
   has_many :workouts
 
+  # Routine - CurrentWorkout association
+  has_many :current_workouts
 
   #Validations
   validates :title, presence: true

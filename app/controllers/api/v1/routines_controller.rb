@@ -22,7 +22,7 @@ class Api::V1::RoutinesController < ApplicationController
 
         RoutineExercise.create(routine: @routine, exercise: @exercise, name: e[:name], description: e[:description], sets: e["sets"].last["set"], reps: reps, measure:measure)
       end
-      byebug
+    
       render json: @routine
     else
       render json: {error: @routine.errors.messages }, status: 401
