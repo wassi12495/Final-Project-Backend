@@ -5,4 +5,6 @@ class Exercise < ApplicationRecord
   has_many :routines, through: :routine_exercises
 
   has_many :current_workout_exercises
+
+  has_many :workout_exercises
 end

@@ -14,17 +14,20 @@ class Api::V1::WorkoutsController < ApplicationController
       routine_id = params["routine_id"]
       current_workout_id = params["currentWorkout_id"]
       exercises = params["exercises"]
-      byebug
       @workout = Workout.new(user_id: current_user["id"], routine_id: routine_id, time_of_workout:Time.now)
-      render json: {message: "STILL IN TESTING"}
-      # if @workout.save
-      #
-      #
-      #
-      # else
-      #
-      #   render json: {error: "Failed to create workout."}, status: 401
-      # end
+      if @workout.save
+        exercises.each do |exercise|
+
+          WorkoutExercise.create(workout:@workout, exercise_id: exercise["exercise_id"], name: exercise["name"], sets: exercise["sets"], reps: exercise["reps"], measure_input: exercise["measure_input"])
+
+          CurrentWorkoutExercise.destroy(exercise["id"])
+        end
+        CurrentWorkout.destroy(current_workout_id)
+        render json: @workout
+      else
+
+        render json: {error: "Failed to create workout."}, status: 401
+      end
     else
       render json: {message: "Failed to authenticate user."}, status: 404
     end
