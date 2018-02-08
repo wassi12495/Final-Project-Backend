@@ -42,10 +42,20 @@ class Api::V1::CurrentWorkoutsController < ApplicationController
 
   def add_exercise
     if current_user
-      byebug
       @current_workout = CurrentWorkout.find(params["current_workout_id"])
       exercise = params["update"]
-      CurrentWorkoutExercise.create(current_workout:@current_workout, exercise: exercise, measure: exercise.measure, name: exercise.name, sets:exercise.sets, reps:exercise.reps, measure_input: measure_input)
+      @exercise = Exercise.find(exercise["id"])
+      ec= ExerciseCategory.find(@exercise['exercise_category_id'])
+      subj = ec['subject_of_measurement']
+      unit = ec['unit']
+      measure = "#{subj} #{unit}"
+      @current_workout_exercise = CurrentWorkoutExercise.new(current_workout:@current_workout, exercise_id: @exercise["id"], measure: measure, name: @exercise["name"], sets:1, reps:[0], measure_input: [0])
+      if @current_workout_exercise.save
+        render json: @current_workout_exercise
+      else
+        render json: {error: "Failed to create current workout exercise"}, status: 401
+      end
+
     else
       render json: {error: "Invalid Token: Must be logged in."}
     end
