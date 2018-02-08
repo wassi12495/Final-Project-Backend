@@ -51,9 +51,11 @@ ActiveRecord::Schema.define(version: 20180208153757) do
     t.string "name"
     t.string "description"
     t.bigint "exercise_category_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["exercise_category_id"], name: "index_exercises_on_exercise_category_id"
+    t.index ["user_id"], name: "index_exercises_on_user_id"
   end
 
   create_table "routine_exercises", force: :cascade do |t|
@@ -119,6 +121,7 @@ ActiveRecord::Schema.define(version: 20180208153757) do
   add_foreign_key "current_workout_exercises", "exercises"
   add_foreign_key "current_workouts", "routines"
   add_foreign_key "current_workouts", "users"
+  add_foreign_key "exercises", "users"
   add_foreign_key "routine_exercises", "exercises"
   add_foreign_key "routine_exercises", "routines"
   add_foreign_key "routines", "users"

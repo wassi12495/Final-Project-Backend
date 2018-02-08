@@ -9,7 +9,9 @@ class User < ApplicationRecord
   # has_many :exercises, through: :workouts
 
   validates :username, :password, :password_confirmation, presence: true
+  validates :username, uniqueness: true
   validates :password, confirmation: true
+
 
 
   private

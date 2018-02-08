@@ -7,7 +7,7 @@ class Api::V1::UsersController < ApplicationController
 
   # TODO: I don't know if I will need this
   def show
-    
+
   end
 
   def create
@@ -21,7 +21,7 @@ class Api::V1::UsersController < ApplicationController
     if @user.save
       render json: {username: @user.username, first_name: @user.first_name, last_name:@user.last_name}
     else
-      render json: {error:"Signup invalid"},status: 401
+      render json: {errors: @user.errors.full_messages}
     end
   end
 
