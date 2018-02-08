@@ -8,8 +8,10 @@ Rails.application.routes.draw do
       resources :workouts
       resources :routines
       resources :current_workouts
-      
+
       get '/exercise_categories', to: 'exercise_categories#index'
+
+      post '/current_workouts/add_exercise', to: 'current_workouts#add_exercise'
 
       post '/login', to: 'auth#create'
       get '/current_user', to: 'auth#show'

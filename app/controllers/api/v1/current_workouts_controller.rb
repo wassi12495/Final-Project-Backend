@@ -40,6 +40,17 @@ class Api::V1::CurrentWorkoutsController < ApplicationController
     end
   end
 
+  def add_exercise
+    if current_user
+      byebug
+      @current_workout = CurrentWorkout.find(params["current_workout_id"])
+      CurrentWorkoutExercise.create(current_workout:@current_workout, exercise: exercise, measure: re.measure, name: re.name, sets:re.sets, reps:re.reps, measure_input: measure_input)
+    else
+      render json: {error: "Invalid Token: Must be logged in."}
+    end
+
+  end
+
   def update
   end
 
