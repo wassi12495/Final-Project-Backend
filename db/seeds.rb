@@ -40,10 +40,12 @@ ex1 = curr_workout.routine.routine_exercises[0]
 ex2 = curr_workout.routine.routine_exercises[1]
 e1 = ex1.exercise
 e2 = ex2.exercise
+ex1_measure = ex1.reps.map{|i|0}
+ex2_measure = ex2.reps.map{|i|0}
 
-cw1_exercise = CurrentWorkoutExercise.create(current_workout: curr_workout, exercise:e1, measure:ex1.measure, name: ex1.name, sets: ex1.sets, reps:ex1.reps)
+cw1_exercise = CurrentWorkoutExercise.create(current_workout: curr_workout, exercise:e1, measure:ex1.measure, name: ex1.name, sets: ex1.sets, reps:ex1.reps, measure_input:ex1_measure)
 
-cw2_exercise = CurrentWorkoutExercise.create(current_workout: curr_workout, exercise:e2, measure:ex2.measure, name: ex2.name, sets: ex2.sets, reps:ex2.reps)
+cw2_exercise = CurrentWorkoutExercise.create(current_workout: curr_workout, exercise:e2, measure:ex2.measure, name: ex2.name, sets: ex2.sets, reps:ex2.reps, measure_input: ex2_measure)
 
 
 

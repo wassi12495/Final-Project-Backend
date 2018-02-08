@@ -1,9 +1,14 @@
 class Api::V1::CurrentWorkoutsController < ApplicationController
 
   def index
-    if current_user.current_workout
-      @curr_workout = CurrentWorkout.find(current_user.current_workout[:id])
-      render json: @curr_workout
+    if current_user
+      if current_user.current_workout
+        @curr_workout = CurrentWorkout.find(current_user.current_workout[:id])
+        render json: @curr_workout
+      else
+        render json: {error: "This user has no current workout."}
+      end
+
     end
   end
 
@@ -15,9 +20,11 @@ class Api::V1::CurrentWorkoutsController < ApplicationController
         @current_workout.user = current_user
 
         if @current_workout.save
+
           @current_workout.routine.routine_exercises.each do |re|
             exercise = re.exercise
-            CurrentWorkoutExercise.create(current_workout:@current_workout, exercise: exercise, measure: re.measure, name: re.name, sets:re.sets, reps:re.reps)
+            measure_input = re.reps.map{|i| 0}
+            CurrentWorkoutExercise.create(current_workout:@current_workout, exercise: exercise, measure: re.measure, name: re.name, sets:re.sets, reps:re.reps, measure_input: measure_input)
           end
           render json: @current_workout
         else
