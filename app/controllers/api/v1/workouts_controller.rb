@@ -14,7 +14,7 @@ class Api::V1::WorkoutsController < ApplicationController
       routine_id = params["routine_id"]
       current_workout_id = params["currentWorkout_id"]
       exercises = params["exercises"]
-      @workout = Workout.new(user_id: current_user["id"], routine_id: routine_id, time_of_workout:Time.now)
+      @workout = Workout.new(user_id: current_user["id"], routine_id: routine_id, time_of_workout:Time.now, title:params["title"])
       if @workout.save
         exercises.each do |exercise|
 
