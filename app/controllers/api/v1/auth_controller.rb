@@ -16,8 +16,7 @@ class Api::V1::AuthController < ApplicationController
         jwt: JWT.encode({user_id: @user.id}, ENV['secret_key'], 'HS256')
       }
     else
-
-      render json: {error: 'User not found'}, status: 404
+      render json: {error: ['Failed to login. Make sure you spelled your Username and Password correctly.']}, status: 404
     end
   end
 
