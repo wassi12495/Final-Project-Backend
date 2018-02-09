@@ -1,10 +1,17 @@
 class Api::V1::ExercisesController < ApplicationController
 
   def index
-    @exercises = Exercise.all
-    render json: @exercises
+
+    if current_user
+      @exercises = (Exercise.where(user_id: nil))
+      user_exercises = Exercise.where(user_id: current_user[:id])
+      render json: {user_exercises: user_exercises, seed_exercises: @exercises}
+    else
+      render json: {message: "Must be logged in."}
+    end
   end
 
+  # @exercises = Exercise.all
   def create
     if current_user
 
