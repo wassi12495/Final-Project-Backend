@@ -1,6 +1,11 @@
 class User < ApplicationRecord
   has_secure_password
 
+
+  has_many :clients, class_name: "User", foreign_key: "trainer_id"
+  belongs_to :trainer, class_name: "User", optional: true
+
+  
   has_many :routines
   has_many :exercises, through: :routines
 

@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :last_name
       t.boolean :is_trainer
       t.integer :weight
+      t.references :trainer, index: true
 
       t.timestamps
     end

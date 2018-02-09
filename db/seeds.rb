@@ -3,6 +3,8 @@
 # Create Test Users
 test_user = User.create(username:"Josh", password:"111", password_confirmation:"111", first_name:"Josh", last_name: "\"Test\" Wasserman", is_trainer:true)
 
+test_client = User.create(username:"client", password:"111", password_confirmation:"111", first_name:"Test", last_name: "Client", is_trainer:false, trainer: test_user)
+
 # Create Test ExerciseCategories
 cardio = ExerciseCategory.create(name: "Cardio", subject_of_measurement:"Distance", unit:"(miles)", measure_of_duration: "Time")
 

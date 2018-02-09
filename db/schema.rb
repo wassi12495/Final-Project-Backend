@@ -87,8 +87,10 @@ ActiveRecord::Schema.define(version: 20180208153757) do
     t.string "last_name"
     t.boolean "is_trainer"
     t.integer "weight"
+    t.bigint "trainer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["trainer_id"], name: "index_users_on_trainer_id"
   end
 
   create_table "workout_exercises", force: :cascade do |t|
