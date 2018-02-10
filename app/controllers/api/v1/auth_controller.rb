@@ -12,6 +12,7 @@ class Api::V1::AuthController < ApplicationController
         last_name: @user.last_name,
         workouts: @user.workouts,
         routines: @user.routines,
+        is_trainer: @user.is_trainer,
 
         jwt: JWT.encode({user_id: @user.id}, ENV['secret_key'], 'HS256')
       }
@@ -29,6 +30,7 @@ class Api::V1::AuthController < ApplicationController
         username: current_user.username,
         first_name: current_user.first_name,
         last_name: current_user.last_name,
+        is_trainer: current_user.is_trainer,
         workouts: current_user.workouts,
         currentWorkout: current_user.current_workout,
         routines: current_user.routines.map do |routine|

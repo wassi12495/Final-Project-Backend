@@ -16,7 +16,7 @@ class Api::V1::UsersController < ApplicationController
 
      @user.password = params[:password]
      @user.password_confirmation = params[:password_confirmation]
-     @user =  User.new(username: params[:username], password: params[:password], first_name: params[:first_name], last_name: params[:last_name], is_trainer: params[:is_trainer])
+     # @user =  User.new(username: params[:username], password: params[:password], first_name: params[:first_name], last_name: params[:last_name], is_trainer: params[:is_trainer])
      byebug
 
     if @user.save

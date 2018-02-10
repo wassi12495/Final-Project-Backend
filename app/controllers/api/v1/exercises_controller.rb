@@ -11,7 +11,6 @@ class Api::V1::ExercisesController < ApplicationController
     end
   end
 
-  # @exercises = Exercise.all
   def create
     if current_user
 
