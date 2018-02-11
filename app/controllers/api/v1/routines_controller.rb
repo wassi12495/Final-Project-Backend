@@ -1,8 +1,14 @@
 class Api::V1::RoutinesController < ApplicationController
 
   def index
-    @routines = Routine.all
-    render json: @routines
+    if current_user
+      byebug
+      @routines = Routine.all
+
+      render json: @routines
+    else
+      render json: {message: "Must be logged in."}
+    end
 
   end
 
@@ -22,7 +28,7 @@ class Api::V1::RoutinesController < ApplicationController
 
         RoutineExercise.create(routine: @routine, exercise: @exercise, name: e[:name], description: e[:description], sets: e["sets"].last["set"], reps: reps, measure:measure)
       end
-    
+
       render json: @routine
     else
       render json: {error: @routine.errors.messages }, status: 401
