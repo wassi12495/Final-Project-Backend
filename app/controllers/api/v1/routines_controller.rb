@@ -9,7 +9,7 @@ class Api::V1::RoutinesController < ApplicationController
       render json: {routines: @routines.map do |routine|
         {id: routine.id, title:  routine.title, exercises: routine.routine_exercises, workouts: routine.workouts}
       end
-}
+      }
     else
       render json: {message: "Must be logged in."}
     end

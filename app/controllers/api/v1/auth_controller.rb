@@ -47,7 +47,7 @@ class Api::V1::AuthController < ApplicationController
 
     if current_user
       workouts = current_user.workouts.map do |w|
-        {id:w.id, title:w.title, time_of_workout: w.time_of_workout}
+        {id:w.id, title:w.title, time_of_workout: w.time_of_workout, exercises: w.exercises}
       end
 
       render json:{workouts: workouts }
@@ -62,7 +62,7 @@ class Api::V1::AuthController < ApplicationController
       if current_user.is_trainer
         if !!current_user.clients
           clients = current_user.clients.map do |client|
-            {id: client.id, first_name: client.first_name, last_name:client.last_name}
+            {id: client.id, first_name: client.first_name, last_name:client.last_name, workouts: client.workouts}
           end
           render json: {clients: clients}
         else

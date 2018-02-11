@@ -45,12 +45,56 @@ RoutineExercise.create(routine: seed_routine2, exercise: benchPress, name: bench
 
 
 # Create Test Workouts
+
+# Custom workout
 test_workout = Workout.create(title: "Test Custom workout", user: test_user, time_of_workout: Time.now)
+
+WorkoutExercise.create(workout: test_workout, exercise_id: 1, name: "Run", sets: 1, reps: [1], measure_input:[10])
+
+
+# User made Routine  based workout 1
 test_workout_2 = Workout.create(title: "Test routine workout", user: test_user, routine: cardio_routine, time_of_workout: Time.now)
 
+re1 = cardio_routine.exercises.first
+
+WorkoutExercise.create(workout:test_workout_2, exercise_id: re1[:id], name: re1[:name], sets: re1[:sets], reps: re1[:reps], measure_input: [2])
+
+# Client workout on seed routine
+
+# 1
 test_workout_3 = Workout.create(title: "Test client workout 1", user: client_1, routine: seed_routine1, time_of_workout: Time.now)
+
+re2 = seed_routine1.exercises[0]
+re3 = seed_routine1.exercises[1]
+
+
+WorkoutExercise.create(workout:test_workout_3, exercise_id: re2[:id], name: re2[:name], sets: re2[:sets], reps: re2[:reps], measure_input: [200,225,250])
+WorkoutExercise.create(workout:test_workout_3, exercise_id: re3[:id], name: re3[:name], sets: re3[:sets], reps: re3[:reps], measure_input: [100,125,150])
+
+
+
+# 2
 test_workout_4 = Workout.create(title: "Test client workout 2", user: client_1, routine: seed_routine2, time_of_workout: Time.now)
+
+
+re4 = cardio_routine.exercises[0]
+
+
+WorkoutExercise.create(workout:test_workout_4, exercise_id: re4[:id], name: re4[:name], sets: re4[:sets], reps: re4[:reps], measure_input: [200,225,250])
+
+
+
 test_workout_5 = Workout.create(title: "Test client workout 3", user: client_2, routine: seed_routine1, time_of_workout: Time.now)
+
+re5 = seed_routine1.exercises[0]
+re6 = seed_routine1.exercises[1]
+
+
+WorkoutExercise.create(workout:test_workout_5, exercise_id: re5[:id], name: re5[:name], sets: re5[:sets], reps: re5[:reps], measure_input: [200,225,250])
+WorkoutExercise.create(workout:test_workout_5, exercise_id: re6[:id], name: re6[:name], sets: re6[:sets], reps: re6[:reps], measure_input: [100,125,150])
+
+
+
 
 # Create Test Current Workout & Test Current Workout Exercises
 
