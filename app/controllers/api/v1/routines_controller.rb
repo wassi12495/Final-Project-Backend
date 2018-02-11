@@ -2,10 +2,14 @@ class Api::V1::RoutinesController < ApplicationController
 
   def index
     if current_user
-      byebug
-      @routines = Routine.all
+      seed_routines = Routine.where(user_id: nil)
+      user_routines = Routine.where(user_id: current_user.id)
+      @routines = seed_routines + user_routines
 
-      render json: @routines
+      render json: {routines: @routines.map do |routine|
+        {id: routine.id, title:  routine.title, exercises: routine.routine_exercises, workouts: routine.workouts}
+      end
+}
     else
       render json: {message: "Must be logged in."}
     end
