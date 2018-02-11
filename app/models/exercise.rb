@@ -1,5 +1,6 @@
 class Exercise < ApplicationRecord
   belongs_to :exercise_category
+  belongs_to :user, optional: true
 
   has_many :routine_exercises
   has_many :routines, through: :routine_exercises

@@ -1,6 +1,6 @@
 class Routine < ApplicationRecord
 
-  belongs_to :user
+  belongs_to :user, optional: true
 
   # Routine - Exercise associations
   has_many :routine_exercises
