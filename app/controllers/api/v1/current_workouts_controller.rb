@@ -66,6 +66,16 @@ class Api::V1::CurrentWorkoutsController < ApplicationController
   end
 
   def destroy
+    if current_user
+      @current_workout = CurrentWorkout.find(params[:id])
+      @current_workout.exercises.each do |exercise|
+        CurrentWorkoutExercise.destroy(exercise.id)
+      end
+      CurrentWorkout.destroy(@current_workout.id)
+      render json: {message: "Current Workout deleted."}
+    else
+      render json: {error: "You don't have permission to do that."}
+    end
   end
 
   private
