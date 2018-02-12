@@ -21,11 +21,12 @@ class Api::V1::ExercisesController < ApplicationController
 
       @exercise = Exercise.new(exercise_params)
       @exercise["user_id"] = current_user["id"]
-      @exercise[:exercise_category] = ExerciseCategory.find(params[:exercise_category_id])
       if @exercise.save
         render json: @exercise
       else
-        render json: {error: "Failed to create new exercise."}, status: 401
+        byebug
+        # render json: {error: "Failed to create new exercise."}, status: 401
+        render json: @exercise.errors.full_messages 
       end
     else
       render json: {error: "Failed to authenticate user."}, status: 404

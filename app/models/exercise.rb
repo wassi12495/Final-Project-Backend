@@ -8,4 +8,9 @@ class Exercise < ApplicationRecord
   has_many :current_workout_exercises
 
   has_many :workout_exercises
+
+
+  # Validations
+
+  validates :name, presence: true
 end

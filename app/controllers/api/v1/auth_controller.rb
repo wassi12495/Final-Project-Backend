@@ -61,10 +61,10 @@ class Api::V1::AuthController < ApplicationController
     if current_user
       if current_user.is_trainer
         if !!current_user.clients
-          clients = current_user.clients.map do |client|
+          @clients = current_user.clients.map do |client|
             {id: client.id, first_name: client.first_name, last_name:client.last_name, workouts: client.workouts}
           end
-          render json: {clients: clients}
+          render json: @clients
         else
           render json: {message: 'Trainer currently has no clients.'}
         end
