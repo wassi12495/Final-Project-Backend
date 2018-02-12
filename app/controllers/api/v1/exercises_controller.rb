@@ -24,9 +24,7 @@ class Api::V1::ExercisesController < ApplicationController
       if @exercise.save
         render json: @exercise
       else
-        byebug
-        # render json: {error: "Failed to create new exercise."}, status: 401
-        render json: @exercise.errors.full_messages 
+        render json: {errors: @exercise.errors.full_messages}, status: 401
       end
     else
       render json: {error: "Failed to authenticate user."}, status: 404
