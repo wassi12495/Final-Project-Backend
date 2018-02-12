@@ -31,7 +31,7 @@ class Api::V1::CurrentWorkoutsController < ApplicationController
           render json: {error: "Failed to create current workout"}, status: 401
         end
       else
-        render json: {error: "This user already has an active workout."}, status: 409
+        render json: {errors: ["This user already has an active workout."]}, status: 409
 
       end
 
