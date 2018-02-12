@@ -17,7 +17,7 @@ class Api::V1::AuthController < ApplicationController
         jwt: JWT.encode({user_id: @user.id}, ENV['secret_key'], 'HS256')
       }
     else
-      render json: {error: ['Failed to login. Make sure you spelled your Username and Password correctly.']}, status: 404
+      render json: {errors: ['Failed to login. Make sure you spelled your Username and Password correctly.']}, status: 404
     end
   end
 
@@ -56,26 +56,7 @@ class Api::V1::AuthController < ApplicationController
     end
   end
 
-  def get_clients
 
-    if current_user
-      if current_user.is_trainer
-        if !!current_user.clients
-          @clients = current_user.clients.map do |client|
-            {id: client.id, first_name: client.first_name, last_name:client.last_name, workouts: client.workouts}
-          end
-          render json: @clients
-        else
-          render json: {message: 'Trainer currently has no clients.'}
-        end
-      else
-      render json: {message: 'User is not a trainer.'}
-      end
-    else
-      render json: {error: "Must be logged in."}, status: 404
-    end
-
-  end
 
 
 end
