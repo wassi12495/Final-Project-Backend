@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       get '/current_user/workouts', to: 'auth#show_workouts'
 
       get '/current_user/clients', to: 'trainer#get_clients'
+      post '/current_user/add_client', to: 'trainer#add_client'
 
 
     end
