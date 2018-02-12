@@ -9,6 +9,8 @@ client_2 = User.create(username:"client2", password:"111", password_confirmation
 
 client_3 = User.create(username:"client3", password:"111", password_confirmation:"111", first_name:"Test", last_name: "Client 3", is_trainer:false, trainer: test_user)
 
+client_4 = User.create(username:"client4", password:"111", password_confirmation:"111", first_name:"Test", last_name: "Client 4", is_trainer:false)
+
 # Create Test ExerciseCategories
 cardio = ExerciseCategory.create(name: "Cardio", subject_of_measurement:"Distance", unit:"(miles)", measure_of_duration: "Time")
 
