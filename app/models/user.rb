@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_one :current_workout
 
   has_many :add_client_requests, foreign_key: "trainer_id"
-  # has_many :add_client_requests, foreign_key: "client_id"
+  has_many :add_trainer_requests, foreign_key: "client_id"
 
   # has_many :exercises, through: :workouts
 
