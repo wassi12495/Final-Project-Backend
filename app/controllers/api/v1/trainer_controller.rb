@@ -23,7 +23,21 @@ class Api::V1::TrainerController < ApplicationController
   end
 
   def add_client
+    if current_user
+      @client_req = AddClientRequest.new(trainer_id: current_user.id, client_id: params[:client_id], message: params[:message])
+      
+      byebug
+      if @client_req.save()
+        render json: @client_req
 
+      else
+        render json: @client_req.errors.full_messages
+
+      end
+
+    else
+      render json: {errord: ["Must be logged in."]}, status: 404
+    end
   end
 
 
