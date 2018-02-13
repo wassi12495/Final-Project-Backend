@@ -24,11 +24,16 @@ class Api::V1::TrainerController < ApplicationController
 
   def add_client
     if current_user
-      @client_req = AddClientRequest.new(trainer_id: current_user.id, client_id: params[:client_id], message: params[:message])
-      
-      byebug
+      client = User.find_by(username: params[:client][:username])
+      @client_req = AddClientRequest.new(trainer_id: current_user.id, client_id: client.id, message: params[:message])
+
       if @client_req.save()
-        render json: @client_req
+        @trainer_req = AddTrainerRequest.new(trainer_id: current_user.id, client_id: client.id, message: params[:message])
+        if @trainer_req.save()
+          render json: @client_req
+        else
+          render json: @client_req.errors.full_messages
+        end
 
       else
         render json: @client_req.errors.full_messages

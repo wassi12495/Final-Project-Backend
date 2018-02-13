@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20180212212155) do
   end
 
   create_table "add_trainer_requests", force: :cascade do |t|
+    t.integer "trainer_id"
     t.integer "client_id"
     t.string "message"
     t.datetime "created_at", null: false
