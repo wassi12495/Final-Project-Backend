@@ -22,6 +22,24 @@ class Api::V1::TrainerController < ApplicationController
 
   end
 
+  def send_client_request
+    if current_user
+      client = User.find_by(username: params[:client][:username])
+      req = AddClientRequest.new(trainer_id: current_user[:id], client_id: client[:id], message: params[:message])
+      if req.save
+
+        render json: {message: "Request to #{client[:username]} successfull."}
+      else
+
+        render json: req.error.full_messages
+
+      end
+
+    else
+      render json: {errors: ["Must be logged in."]}, status: 404
+    end
+  end
+
   def add_client
     if current_user
       client = User.find_by(username: params[:client][:username])
