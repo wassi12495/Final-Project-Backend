@@ -22,6 +22,8 @@ Rails.application.routes.draw do
       post '/current_user/send_client_request', to: 'trainer#send_client_request'
       post '/current_user/add_client', to: 'trainer#add_client'
 
+      get '/current_user/get_notifications', to: 'users#get_notifications'
+
 
     end
   end

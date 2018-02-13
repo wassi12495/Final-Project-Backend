@@ -29,6 +29,31 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  def get_notifications
+    if current_user
+
+      if current_user.is_trainer
+        # User is trainer
+        render json: {message: "Still in development."}
+
+      else
+        #  User is client
+        reqs = AddClientRequest.where(client_id: current_user[:id])
+        byebug
+        @reqs = reqs.map do |r|
+          byebug
+          trainer = User.find(r[:trainer_id])
+          {trainer: trainer}
+
+        end
+        render json: @reqs
+      end
+    else
+
+      render json: {errors: ["Must be an authenticated user."]}, status: 400
+    end
+
+  end
   # TODO: User in updating user profile
   def update
   end
