@@ -24,6 +24,8 @@ Rails.application.routes.draw do
 
       get '/current_user/get_notifications', to: 'users#get_notifications'
 
+      post '/current_user/accept_request', to: 'client#accept_request'
+
 
     end
   end
