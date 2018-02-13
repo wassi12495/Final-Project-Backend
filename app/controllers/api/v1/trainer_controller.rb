@@ -28,7 +28,7 @@ class Api::V1::TrainerController < ApplicationController
       req = AddClientRequest.new(trainer_id: current_user[:id], client_id: client[:id], message: params[:message])
       if req.save
 
-        render json: {message: "Request to #{client[:username]} successfull."}
+        render json: {message: "Request to #{client[:username]} successful."}
       else
 
         render json: req.error.full_messages
