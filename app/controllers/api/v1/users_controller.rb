@@ -39,11 +39,14 @@ class Api::V1::UsersController < ApplicationController
       else
         #  User is client
         reqs = AddClientRequest.where(client_id: current_user[:id])
-        byebug
         @reqs = reqs.map do |r|
-          byebug
           trainer = User.find(r[:trainer_id])
-          {trainer: trainer}
+
+            {trainer:
+              {username: trainer[:username], first_name: trainer[:first_name], last_name: trainer[:last_name] },
+              message: r[:message],
+              request_id: r[:id]
+            }
 
         end
         render json: @reqs
