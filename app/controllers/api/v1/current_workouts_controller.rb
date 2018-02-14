@@ -65,6 +65,15 @@ class Api::V1::CurrentWorkoutsController < ApplicationController
   def update
   end
 
+  def remove_exercise
+    if current_user
+      CurrentWorkoutExercise.destroy(params[:id])
+      render json: {message: "Current workout exercise successfully destroyed"}
+    else
+      render json: {error: "Invalid Token: Must be logged in."}
+    end
+  end
+
   def destroy
     if current_user
       @current_workout = CurrentWorkout.find(params[:id])

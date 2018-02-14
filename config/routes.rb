@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get '/exercise_categories', to: 'exercise_categories#index'
 
       post '/current_workouts/add_exercise', to: 'current_workouts#add_exercise'
+      post'current_workouts/remove_exercise', to: 'current_workouts#remove_exercise'
 
 
       post '/login', to: 'auth#create'
