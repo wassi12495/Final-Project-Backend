@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       post '/current_workouts/add_exercise', to: 'current_workouts#add_exercise'
       post'current_workouts/remove_exercise', to: 'current_workouts#remove_exercise'
 
+      get '/users_without_trainers', to: 'users#users_without_trainers'
 
       post '/login', to: 'auth#create'
       get '/current_user', to: 'auth#show'
