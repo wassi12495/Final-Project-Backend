@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       get '/current_user/clients', to: 'trainer#get_clients'
       post '/current_user/send_client_request', to: 'trainer#send_client_request'
       post '/current_user/add_client', to: 'trainer#add_client'
+      post '/trainer/share_routine', to:'trainer#share_routine'
 
       get '/current_user/get_notifications', to: 'users#get_notifications'
 

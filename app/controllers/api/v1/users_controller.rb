@@ -11,7 +11,6 @@ class Api::V1::UsersController < ApplicationController
 
   def users_without_trainers
     users = User.where(trainer_id: nil)
-    byebug
     @users = users.map do |user|
       {username: user.username, first_name: user.first_name, last_name:user.last_name}
 

@@ -64,5 +64,25 @@ class Api::V1::TrainerController < ApplicationController
   end
 
 
+  def share_routine
+    if current_user
+      @routine = Routine.new(title: params[:routine][:title],user_id: params[:client_id])
+
+      if @routine.save
+          params[:routine][:exercises].each do |e|
+            @exercise = Exercise.find_by(id: e["id"])
+
+             r = RoutineExercise.create(routine: @routine, exercise: @exercise, name: e[:name], description: e[:description], sets: e[:sets], reps: e[:reps], measure:e[:measure])
+          end
+        render json: {message: "You successfully shared a routine with your client"}
+      else
+        render json: {errors: @routine.errors.full_messages }, status: 401
+      end
+    else
+      render json: {errord: ["Must be logged in."]}, status: 404
+    end
+  end
+
+
 
 end
