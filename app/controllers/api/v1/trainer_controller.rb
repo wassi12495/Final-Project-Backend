@@ -71,7 +71,6 @@ class Api::V1::TrainerController < ApplicationController
       if @routine.save
           params[:routine][:exercises].each do |e|
             @exercise = Exercise.find_by(id: e[:exercise_id])
-              byebug
              r = RoutineExercise.create(routine: @routine, exercise: @exercise, name: e[:name], description: e[:description], sets: e[:sets], reps: e[:reps], measure:e[:measure])
 
           end
