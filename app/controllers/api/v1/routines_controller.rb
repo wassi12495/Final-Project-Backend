@@ -34,8 +34,8 @@ class Api::V1::RoutinesController < ApplicationController
 
           RoutineExercise.create(routine: @routine, exercise: @exercise, name: e[:name], description: e[:description], sets: e["sets"].last["set"], reps: reps, measure:measure)
         end
-
-        render json: @routine
+        routine = {id: @routine.id, title:  @routine.title, exercises: @routine.routine_exercises, workouts: @routine.workouts}
+        render json: routine
       else
         render json: {errors: @routine.errors.full_messages }, status: 401
       end
