@@ -11,7 +11,7 @@ class Api::V1::RoutinesController < ApplicationController
       end
       render json:  @routines
     else
-      render json: {message: "Must be logged in."}
+      render json: {errors: "Must be logged in."}
     end
   end
 
