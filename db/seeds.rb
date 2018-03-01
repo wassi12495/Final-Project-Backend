@@ -3,13 +3,13 @@
 # Create Test Users
 test_user = User.create(username:"Josh", password:"111", password_confirmation:"111", first_name:"Josh", last_name: "\"Test\" Wasserman", is_trainer:true)
 
-test_user = User.create(username:"DemoTrainer", password:"111", password_confirmation:"111", first_name:"Demo", last_name: "Trainer", is_trainer:true)
+test_trainer = User.create(username:"DemoTrainer", password:"111", password_confirmation:"111", first_name:"Demo", last_name: "Trainer", is_trainer:true)
 
 client_1 = User.create(username:"client1", password:"111", password_confirmation:"111", first_name:"Peter", last_name: "Client 1", is_trainer:false, trainer: test_user)
 
 client_2 = User.create(username:"client2", password:"111", password_confirmation:"111", first_name:"Phil", last_name: "Client 2", is_trainer:false, trainer: test_user)
 
-client_3 = User.create(username:"client3", password:"111", password_confirmation:"111", first_name:"Alex", last_name: "Client 3", is_trainer:false, trainer: test_user)
+client_3 = User.create(username:"client3", password:"111", password_confirmation:"111", first_name:"Alex", last_name: "Client 3", is_trainer:false, trainer: test_trainer)
 
 client_4 = User.create(username:"client4", password:"111", password_confirmation:"111", first_name:"Jerry", last_name: "Client 4", is_trainer:false)
 
