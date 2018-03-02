@@ -43,7 +43,7 @@ class Api::V1::CurrentWorkoutsController < ApplicationController
   def add_exercise
     if current_user
       @current_workout = CurrentWorkout.find(params[:id])
-      exercise = params["update"]
+      exercise = params[:exercise]
       @exercise = Exercise.find(exercise["id"])
       ec= ExerciseCategory.find(@exercise['exercise_category_id'])
       subj = ec['subject_of_measurement']
