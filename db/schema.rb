@@ -66,12 +66,11 @@ ActiveRecord::Schema.define(version: 20180212212155) do
   create_table "exercises", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.bigint "exercise_category_id"
+    t.string "exercise_category"
     t.bigint "user_id"
     t.string "columns", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["exercise_category_id"], name: "index_exercises_on_exercise_category_id"
     t.index ["user_id"], name: "index_exercises_on_user_id"
   end
 
