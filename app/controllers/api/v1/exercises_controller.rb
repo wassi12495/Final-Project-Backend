@@ -5,11 +5,8 @@ class Api::V1::ExercisesController < ApplicationController
     if current_user
       seed_exercises = (Exercise.where(user_id: nil))
       user_exercises = Exercise.where(user_id: current_user[:id])
-      exercises = seed_exercises + user_exercises
-      @exercises = exercises.map do |e|
-        exercise_category = ExerciseCategory.find(e.exercise_category_id)
-        {id: e.id, name: e.name, description: e.description, exercise_category: exercise_category, columns: e.columns}
-      end
+      @exercises = seed_exercises + user_exercises
+      
       render json: @exercises
     else
       render json: {message: "Must be logged in."}
