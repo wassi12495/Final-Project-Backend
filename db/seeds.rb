@@ -21,10 +21,10 @@ body_weight = ExerciseCategory.create(name: "Body Weight", measure_of_duration:"
 olympic = ExerciseCategory.create(name: "Olympic Lift", subject_of_measurement:"Weight", unit:"(lbs)", measure_of_duration:"Reps")
 
 # Create Test Exercises
-run = Exercise.create(name: "Run", description:"Outdoor Run", exercise_category:cardio, columns:["#", "Time", "Distance(Miles)"])
-deadLift = Exercise.create(name: "Dead Lift", description:"Olympic Lift", exercise_category:olympic, columns:["#", "Reps", "Weight(lbs)"])
-benchPress = Exercise.create(name: "Bench Press", description:"Bench Press (flat bench) ", exercise_category:olympic, columns:["#", "Reps", "Weight(lbs)"])
-pushups = Exercise.create(name:"Push-ups", description: "Push-ups", exercise_category:body_weight, columns:["#", "Reps"])
+run = Exercise.create(name: "Run", description:"Outdoor Run", exercise_category: "Cardio", columns:["#", "Time", "Distance(Miles)"])
+deadLift = Exercise.create(name: "Dead Lift", description:"Olympic Lift", exercise_category:"Olympic Lift", columns:["#", "Reps", "Weight(lbs)"])
+benchPress = Exercise.create(name: "Bench Press", description:"Bench Press (flat bench) ", exercise_category:"Olympic Lift", columns:["#", "Reps", "Weight(lbs)"])
+pushups = Exercise.create(name:"Push-ups", description: "Push-ups", exercise_category:"Body Weight", columns:["#", "Reps"])
 
 
 # Create Test Routines
