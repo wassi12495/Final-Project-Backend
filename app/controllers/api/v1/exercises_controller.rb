@@ -8,7 +8,7 @@ class Api::V1::ExercisesController < ApplicationController
       exercises = seed_exercises + user_exercises
       @exercises = exercises.map do |e|
         exercise_category = ExerciseCategory.find(e.exercise_category_id)
-        {id: e.id, name: e.name, description: e.description, exercise_category: exercise_category}
+        {id: e.id, name: e.name, description: e.description, exercise_category: exercise_category, columns: e.columns}
       end
       render json: @exercises
     else
