@@ -6,7 +6,7 @@ class Api::V1::ExercisesController < ApplicationController
       seed_exercises = (Exercise.where(user_id: nil))
       user_exercises = Exercise.where(user_id: current_user[:id])
       @exercises = seed_exercises + user_exercises
-      
+
       render json: @exercises
     else
       render json: {message: "Must be logged in."}
@@ -15,7 +15,6 @@ class Api::V1::ExercisesController < ApplicationController
 
   def create
     if current_user
-
       @exercise = Exercise.new(exercise_params)
       @exercise["user_id"] = current_user["id"]
       if @exercise.save
