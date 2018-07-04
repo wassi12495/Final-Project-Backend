@@ -37,7 +37,7 @@ class Api::V1::ExercisesController < ApplicationController
   private
 
   def exercise_params
-    params.require(:exercise).permit(:id, :name, :description, :exercise_category_id, :columns)
+    params.require(:exercise).permit(:id, :name, :description, :exercise_category, :columns)
   end
 
 end
